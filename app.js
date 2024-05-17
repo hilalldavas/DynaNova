@@ -1,23 +1,30 @@
-import { View } from "react-native-web";
-import React,{Component} from "react";
-import{
-    SafeAreaView,
-    StyleSheet,
-    Scrollview,
-    View,
-    Text,
-    StatusBar,
-} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from "./src/screens/Login";
+import Welcome from './src/screens/Welcome';
+import Signup from './src/screens/Signup';
+import Home from './src/screens/Home';
+import Profil from './src/screens/Profil';
+import Yoga from './src/screens/Yoga'; // Yoga sayfasını ekledik
+import Meditation from './src/screens/Meditation'; // Meditation sayfasını ekledik
 
-export default class App extends React.Component{
-    render(){
-        return(
-            <View style={style.welcome_area}>
-                <Text>ldsajgşda</Text>
-            </View>
-        )
-    }
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Welcome' screenOptions={{headerShown: false}}>
+        <Stack.Screen name='Welcome' component={Welcome} />
+        <Stack.Screen name='Signup' component={Signup} />
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Profil' component={Profil} />
+        <Stack.Screen name='Yoga' component={Yoga} />
+        <Stack.Screen name='Meditation' component={Meditation} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-const style = StyleSheet.create({
-    welcome_area:{paddingTop:150}
-});
+
+export default App;
