@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text,StyleSheet, TextInput, Pressable, Image, Button , TouchableOpacity} from "react-native";
-import { StatusBar } from 'expo-status-bar';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {app,db,auth} from "../screens/firebaseConfig";
 import { doc, getDocs, setDoc, collection } from "firebase/firestore"; 
-import { list } from "firebase/storage";
-
 
 const Profil = () => {
   const [beginnerData, setBeginnerData] = useState([]);
@@ -18,11 +13,11 @@ const Profil = () => {
   const fetchData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "beginner"));
-      const beginnerLessons = querySnapshot.docs.map(doc => ({
+      const beginnerLessons = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         url: doc.data().url,
         dersNo: doc.data().dersNo,
-        Desc: doc.data().Desc
+        Desc: doc.data().Desc,
       }));
       setBeginnerData(beginnerLessons);
     } catch (error) {
@@ -36,7 +31,7 @@ const Profil = () => {
       <Text>Email: {auth.currentUser?.email}</Text>
       <Text>Kullanıcı Bilgileri:</Text>
       {beginnerData.map((lessons) => (
-        <View style={styles.userContainer}>
+        <View key={lessons.id} style={styles.lessonContainer}>
           <Text>No: {lessons.dersNo}</Text>
           <Text>Açıklama: {lessons.Desc}</Text>
           <Text>Link: {lessons.url}</Text>
@@ -46,13 +41,15 @@ const Profil = () => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  userContainer: {
+  lessonContainer: {
     marginVertical: 10,
   },
 });
