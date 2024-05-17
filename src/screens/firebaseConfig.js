@@ -2,7 +2,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIhgXy4y_QBcc-uFa1Cy4D3pcMiroYQdw",
@@ -18,6 +17,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-//const collection = firestore().collection("videos");
 
 export { app , db , auth};
