@@ -9,6 +9,8 @@ const Signup = ({ email, setEmail, password, setPassword, handleAuthentication }
   const [isChecked, setIsChecked] = useState(false);
 
   return (
+    
+    <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
     <View style={styles.container}>
       <Image
         source={require('./images/logo.png')}
@@ -62,6 +64,7 @@ const Signup = ({ email, setEmail, password, setPassword, handleAuthentication }
         <Text style={styles.kayıt}>Hesap Oluştur</Text>
       </Pressable>
     </View>
+    </ImageBackground>
   )
 }
 
@@ -109,7 +112,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(51,77,92,255)'
+    // backgroundColor: 'rgba(51,77,92,255)'
   },
   hesap: {
     textAlign: 'left',

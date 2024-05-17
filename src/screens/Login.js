@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput,Pressable, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TextInput,Pressable, TouchableOpacity, Image,ImageBackground } from "react-native";
 import React, { useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -40,6 +40,7 @@ const Login = ({ navigation }) => {
 
 
   return (
+    <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
     <View style={styles.container}>
       <Image
         source={require('./images/logo.png')}
@@ -50,7 +51,7 @@ const Login = ({ navigation }) => {
         value={email}
         onChangeText={setEmail}
         placeholder="E-mail Giriniz.."
-        placeholderTextColor="#ebdbdb"
+        placeholderTextColor='#334d5c'rg
         autoCapitalize="none"
       />
       <TextInput
@@ -58,7 +59,7 @@ const Login = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
         placeholder="Şifre Giriniz.."
-        placeholderTextColor="#ebdbdb"
+        placeholderTextColor='#334d5c'
         secureTextEntry
       />
       <Pressable onPress={handleAuthentication} style={styles.button}>
@@ -66,13 +67,14 @@ const Login = ({ navigation }) => {
 </Pressable>
 
     </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(51,77,92,255)',
+    // backgroundColor: 'rgba(51,77,92,255)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -86,22 +88,28 @@ const styles = StyleSheet.create({
   input: {
     width: 330,
     height: 50,
-    backgroundColor: 'rgba(206,130,130,255)',
-    color: '#ebdbdb',
+    backgroundColor:'#f2a5a5',
+    color: '#334d5c',
     borderRadius: 20,
     paddingLeft: 20,
     marginBottom: 15,
+    borderWidth: 2, // Çerçeve kalınlığı
+    borderColor: '#ebdbdb', // Çerçeve rengi
+    borderRadius:25,
   },button: {
     marginTop: 15,
-    backgroundColor: 'rgba(206,130,130,255)',
+    backgroundColor: '#f2a5a5',
     width: 200,
     height: 50,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 2, // Çerçeve kalınlığı
+    borderColor: '#ebdbdb', // Çerçeve rengi
+    borderRadius:25,
   },
   buttonText: {
-    color: '#ebdbdb',
+    color: '#334d5c',
     fontWeight: 'bold',
     fontSize: 20,
   },

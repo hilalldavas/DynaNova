@@ -68,8 +68,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 20,
     top: 175,
-    borderWidth: 1, // Çerçeve kalınlığı
-    borderColor: '#334d5c', // Çerçeve rengi
+    backgroundColor:'#334d5c',
+    borderWidth: 2, // Çerçeve kalınlığı
+    borderColor: '#8b97a0', // Çerçeve rengi
     borderRadius:25, // Köşe yuvarlaklığı
   },
   activityIcon: {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color:'#334d5c',
+    color:'#ebdbdb',
   },
   progressContainer: {
     alignItems: 'center',

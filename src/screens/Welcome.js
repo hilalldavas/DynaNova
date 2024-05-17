@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image,ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Welcome = ({ navigation }) => {
   return (
+    <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
     <View style={styles.container}>
       <Image
         source={require('./images/logo.png')}
@@ -27,44 +28,46 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.kayıt}>Kayıt Ol</Text>
       </Pressable>
     </View>
+      </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#334d5c',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   baslik: {
     marginTop: 20,
     fontSize: 50,
     fontWeight: 'bold',
-    color: '#ebdbdb',
+    color: '#334d5c',
   },
   button: {
     marginTop: 50,
-    backgroundColor: 'rgba(206,130,130,255)',
+    backgroundColor: '#f2a5a5',
     width: 230,
     height: 50,
-    borderRadius: 50,
+    borderWidth: 2, // Çerçeve kalınlığı
+    borderColor: '#ebdbdb', // Çerçeve rengi
+    borderRadius:25,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#ebdbdb',
+    color: '#334d5c',
     fontWeight: 'bold',
     fontSize: 20,
   },
   hesap: {
     marginTop: 10,
     fontSize: 17,
-    color: '#ebdbdb',
+    color: '#334d5c',
   },
   kayıt: {
     marginTop: 10,
     fontSize: 17,
-    color: '#ebdbdb',
+    color: '#334d5c',
     fontWeight: 'bold',
   },
 });
