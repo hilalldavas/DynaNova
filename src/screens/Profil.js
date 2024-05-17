@@ -21,6 +21,7 @@ const Profil = () => {
   return (
     <View style={styles.container}>
       <Text>Profil Sayfası</Text>
+      <Text>{auth.currentUser.email}</Text>
     </View>
   );
 };

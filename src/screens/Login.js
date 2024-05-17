@@ -6,10 +6,11 @@ import Checkbox from "expo-checkbox"
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {db , app , auth} from "../screens/firebaseConfig";
 
 const Stack = createNativeStackNavigator();
 
-const firebaseConfig = {
+/* const firebaseConfig = {
   apiKey: "AIzaSyBIhgXy4y_QBcc-uFa1Cy4D3pcMiroYQdw",
   authDomain: "dynanova-bdb6b.firebaseapp.com",
   projectId: "dynanova-bdb6b",
@@ -17,9 +18,10 @@ const firebaseConfig = {
   messagingSenderId: "116378454446",
   appId: "1:116378454446:web:ab2fce338cbbdbdd89a03f",
   measurementId: "G-084HGS5CV9"
-};
+}; */
 
-const app = initializeApp(firebaseConfig);
+/* const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); */
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ const Login = ({ navigation }) => {
 
   const handleAuthentication = async () => {
     try {
-      const auth = getAuth(app);
+      //const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
       navigation.navigate('Home'); // Giriş başarılı olduğunda Home sayfasına yönlendir
