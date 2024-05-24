@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
 
-const HomeScreen = ({ navigation }) => {
+const KategoriYoga = ({ navigation }) => {
   return (
     <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Profil')} style={styles.profileIconContainer}>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     margin:5,
     alignItems: 'center',
     paddingVertical: 10,
-    backgroundColor: '#CC334d5c',
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
     borderWidth: 2, 
     borderColor: '#ebdbdb',
     borderRadius: 25,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#334d5c',
+    color: '#ebdbdb',
   },
   profileIconContainer: {
     position: 'absolute',
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default KategoriYoga;

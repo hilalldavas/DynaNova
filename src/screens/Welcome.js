@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   baslik: {
-    marginTop: 20,
+    marginTop: 40,
     fontSize: 50,
     fontWeight: 'bold',
-    color: '#334d5c',
+    color: '#ffabaa',
   },
   button: {
-    marginTop: 50,
-    backgroundColor: '#f2a5a5',
+    marginTop: 40,
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
     width: 230,
     height: 50,
     borderWidth: 2, // Çerçeve kalınlığı
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#334d5c',
+    color: '#ebdbdb',
     fontWeight: 'bold',
     fontSize: 20,
   },

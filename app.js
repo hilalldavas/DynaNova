@@ -14,6 +14,8 @@ import BeginnerLesson from './src/screens/BeginnerLesson';
 import IntermadiateLesson from './src/screens/IntermadiateLesson';
 import AdvancedLesson from './src/screens/AdvancedLesson';
 import KidsLesson from './src/screens/KidsLessons';
+import HealingMeditation from './src/screens/HealingMeditation.js';
+import BreathExercise from './src/screens/BreathExercise.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ const App = () => {
         <Stack.Screen name='IntermadiateLesson' component={IntermadiateLesson} />
         <Stack.Screen name='AdvancedLesson' component={AdvancedLesson} />
         <Stack.Screen name='KidsLesson' component={KidsLesson} />
+        <Stack.Screen name='HealingMeditation' component={HealingMeditation} />
+        <Stack.Screen name='BreathExercise' component={BreathExercise} />
         <Stack.Screen name='Yoga' component={Yoga} />
         <Stack.Screen name='Meditation' component={Meditation} />
       </Stack.Navigator>

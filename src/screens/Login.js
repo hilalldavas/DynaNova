@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
         value={email}
         onChangeText={setEmail}
         placeholder="E-mail Giriniz.."
-        placeholderTextColor='#334d5c'rg
+        placeholderTextColor='#ebdbdb'rg
         autoCapitalize="none"
       />
       <TextInput
@@ -59,7 +59,7 @@ const Login = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
         placeholder="Şifre Giriniz.."
-        placeholderTextColor='#334d5c'
+        placeholderTextColor='#ebdbdb'
         secureTextEntry
       />
       <Pressable onPress={handleAuthentication} style={styles.button}>
@@ -88,17 +88,17 @@ const styles = StyleSheet.create({
   input: {
     width: 330,
     height: 50,
-    backgroundColor:'#f2a5a5',
-    color: '#334d5c',
+    backgroundColor:'rgba(51, 77, 92, 0.9)',
+    color: '#ebdbdb',
     borderRadius: 20,
     paddingLeft: 20,
     marginBottom: 15,
     borderWidth: 2, // Çerçeve kalınlığı
-    borderColor: '#ebdbdb', // Çerçeve rengi
+    borderColor: '#f2a5a5', // Çerçeve rengi
     borderRadius:25,
   },button: {
     marginTop: 15,
-    backgroundColor: '#f2a5a5',
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
     width: 200,
     height: 50,
     borderRadius: 20,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius:25,
   },
   buttonText: {
-    color: '#334d5c',
+    color: '#ebdbdb',
     fontWeight: 'bold',
     fontSize: 20,
   },

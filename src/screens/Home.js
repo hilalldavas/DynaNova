@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 20,
     top: 175,
-    backgroundColor:'#DD8b97a0',
+    backgroundColor:'rgba(51, 77, 92, 0.9)',
     borderWidth: 2, // Çerçeve kalınlığı
     borderColor: '#ebdbdb', // Çerçeve rengi
     borderRadius:25, // Köşe yuvarlaklığı
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color:'#334d5c',
+    color:'#ebdbdb',
   },
   progressContainer: {
     alignItems: 'center',

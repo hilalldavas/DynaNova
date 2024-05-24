@@ -1,101 +1,77 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import { initializeApp } from 'firebase/app';
 
 const KategoriMeditation = ({ navigation }) => {
   return (
     <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
-
       <TouchableOpacity onPress={() => navigation.navigate('Profil')} style={styles.profileIconContainer}>
         <Image source={require('./images/logo.png')} style={styles.profileIcon} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('BeginnerLesson')}>
-        <Image source={require('./images/beginer.png')} style={styles.activityIcon} />
-        <Text style={styles.activityText}>Başlangıç Seviye Dersleri</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('IntermadiateLesson')}>
-  <Image source={require('./images/intermediate.png')} style={styles.activityIcon} />
-  <Text style={styles.activityText}>Orta Seviye Dersleri</Text>
-</TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <View style={styles.buttonGroup}>
+          <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('BreathExercise')}>
+            <Image source={require('./images/meditation1.png')} style={styles.activityIcon} />
+            <Text style={styles.activityText}>Meditasyona Giriş</Text>
+          </TouchableOpacity>
 
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('AdvancedLesson')}>
-        <Image source={require('./images/advanced.png')} style={styles.activityIcon} />
-        <Text style={styles.activityText}>İleri Seviye Dersleri</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('KidsLesson')}>
-        <Image source={require('./images/kids.png')} style={styles.activityIcon} />
-        <Text style={styles.activityText}>Çocuklar için Yoga Dersleri</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('HealingMeditation')}>
+            <Image source={require('./images/meditation.png')} style={styles.activityIcon} />
+            <Text style={styles.activityText}>Şifa Meditasyonları</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </ImageBackground>
   );
 };
-
+  
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
   },
-  userInfo: {
-    top:150,
-    left:15,
-    flexDirection: 'row',
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 20,
-  },
-  userIcon: {
-    width: 150,
-    height: 90,
-    right:220,
-    marginTop:105,
-  },
-  username: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    marginRight: 5,
-    color:'#334d5c',
-  },
-  profileIconContainer: {
-    position: 'absolute',
-    top: 100,
-    right: 20,
-  },
-  profileIcon: {
-    width: 80,
-    height: 80,
   },
   activity: {
-    flexDirection: 'row',
+    width: '48%',
+    height:'50%',
+    top:75,
+    margin:5,
     alignItems: 'center',
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginBottom: 20,
-    top: 175,
-    backgroundColor:'#DD8b97a0',
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
     borderWidth: 2, 
-    borderColor: '#8b97a0', 
-    borderRadius:25, 
+    borderColor: '#ebdbdb',
+    borderRadius: 25,
   },
   activityIcon: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     marginRight: 10,
   },
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color:'#ebdbdb',
+    color: '#ebdbdb',
   },
-  progressContainer: {
-    alignItems: 'center',
+  profileIconContainer: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
   },
-  progressText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
+  profileIcon: {
+    top:150,
+    right:10,
+    width: 80,
+    height: 80,
   },
 });
 
