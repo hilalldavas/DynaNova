@@ -6,8 +6,14 @@ import Welcome from './src/screens/Welcome';
 import Signup from './src/screens/Signup';
 import Home from './src/screens/Home';
 import Profil from './src/screens/Profil';
-import Yoga from './src/screens/Yoga'; // Yoga sayfasını ekledik
-import Meditation from './src/screens/Meditation'; // Meditation sayfasını ekledik
+import KategoriMeditation from './src/screens/KategoriMeditation';
+import KategoriYoga from './src/screens/KategoriYoga';
+import Yoga from './src/screens/Yoga';
+import Meditation from './src/screens/Meditation';
+import BeginnerLesson from './src/screens/BeginnerLesson';
+import IntermadiateLesson from './src/screens/IntermadiateLesson';
+import AdvancedLesson from './src/screens/AdvancedLesson';
+import KidsLesson from './src/screens/KidsLessons';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +26,12 @@ const App = () => {
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Profil' component={Profil} />
+        <Stack.Screen name='KategoriYoga' component={KategoriYoga} />
+        <Stack.Screen name='KategoriMeditation' component={KategoriMeditation} />
+        <Stack.Screen name='BeginnerLesson' component={BeginnerLesson} />
+        <Stack.Screen name='IntermadiateLesson' component={IntermadiateLesson} />
+        <Stack.Screen name='AdvancedLesson' component={AdvancedLesson} />
+        <Stack.Screen name='KidsLesson' component={KidsLesson} />
         <Stack.Screen name='Yoga' component={Yoga} />
         <Stack.Screen name='Meditation' component={Meditation} />
       </Stack.Navigator>

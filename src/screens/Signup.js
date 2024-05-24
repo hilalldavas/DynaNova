@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet, TextInput, Pressable, Image, Button, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable, Image, Button, ScrollView,ImageBackground } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { initializeApp } from 'firebase/app';
+import { initializeApp,auth } from 'firebase/app';
 import Checkbox from "expo-checkbox"
 const Signup = ({ email, setEmail, password, setPassword, handleAuthentication }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -73,14 +73,14 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
 
-  const auth = getAuth(app);
-  useEffect(() => {
+  //const auth = getAuth(app);
+/*   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
 
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth]); */
 
   const handleAuthentication = async (email, password) => {
     try {

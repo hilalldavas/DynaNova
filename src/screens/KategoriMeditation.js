@@ -2,26 +2,32 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { initializeApp } from 'firebase/app';
 
-const HomeScreen = ({ navigation }) => {
+const KategoriMeditation = ({ navigation }) => {
   return (
     <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
-      <View style={styles.userInfo}>
-        <Text style={styles.username}>Merhaba!</Text>
-        <Image source={require('./images/progress.png')} style={styles.userIcon} />
-      </View>
 
       <TouchableOpacity onPress={() => navigation.navigate('Profil')} style={styles.profileIconContainer}>
         <Image source={require('./images/logo.png')} style={styles.profileIcon} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('KategoriYoga')}>
-        <Image source={require('./images/yoga.png')} style={styles.activityIcon} />
-        <Text style={styles.activityText}>Yoga Dersleri</Text>
+      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('BeginnerLesson')}>
+        <Image source={require('./images/beginer.png')} style={styles.activityIcon} />
+        <Text style={styles.activityText}>Başlangıç Seviye Dersleri</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('KategoriMeditation')}>
-        <Image source={require('./images/lotus.png')} style={styles.activityIcon} />
-        <Text style={styles.activityText}>Meditasyon Dersleri</Text>
+      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('IntermadiateLesson')}>
+  <Image source={require('./images/intermediate.png')} style={styles.activityIcon} />
+  <Text style={styles.activityText}>Orta Seviye Dersleri</Text>
+</TouchableOpacity>
+
+      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('AdvancedLesson')}>
+        <Image source={require('./images/advanced.png')} style={styles.activityIcon} />
+        <Text style={styles.activityText}>İleri Seviye Dersleri</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.activity} onPress={() => navigation.navigate('KidsLesson')}>
+        <Image source={require('./images/kids.png')} style={styles.activityIcon} />
+        <Text style={styles.activityText}>Çocuklar için Yoga Dersleri</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
@@ -69,9 +75,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     top: 175,
     backgroundColor:'#DD8b97a0',
-    borderWidth: 2, // Çerçeve kalınlığı
-    borderColor: '#ebdbdb', // Çerçeve rengi
-    borderRadius:25, // Köşe yuvarlaklığı
+    borderWidth: 2, 
+    borderColor: '#8b97a0', 
+    borderRadius:25, 
   },
   activityIcon: {
     width: 30,
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color:'#334d5c',
+    color:'#ebdbdb',
   },
   progressContainer: {
     alignItems: 'center',
@@ -93,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default KategoriMeditation;
