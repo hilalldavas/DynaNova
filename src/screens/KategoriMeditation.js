@@ -42,8 +42,7 @@ const styles = StyleSheet.create({
   },
   activity: {
     width: '48%',
-    height:'50%',
-    top:75,
+    height:'200%',
     margin:5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -55,12 +54,14 @@ const styles = StyleSheet.create({
   activityIcon: {
     width: 50,
     height: 50,
-    marginRight: 10,
+    position:'relative',
+    top:35,
   },
   activityText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#ebdbdb',
+    top:35,
   },
   profileIconContainer: {
     position: 'absolute',

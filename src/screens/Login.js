@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 15,
     borderWidth: 2, // Çerçeve kalınlığı
-    borderColor: '#f2a5a5', // Çerçeve rengi
+    borderColor: '#ebdbdb', // Çerçeve rengi
     borderRadius:25,
   },button: {
     marginTop: 15,

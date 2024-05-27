@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, Alert, ImageBackground, Image, TouchableOpacity, Linking } from "react-native";
 import { getDocs, collection, query, orderBy } from "firebase/firestore"; 
 import { WebView } from 'react-native-webview';
-import { useNavigation } from '@react-navigation/native'; // useNavigation eklenmiş
+import { useNavigation } from '@react-navigation/native'; 
 import { app, db, auth } from "./firebaseConfig";
 
 const BreathExercise = () => {
   const [AdvancedData, setAdvancedData] = useState([]);
   const [error, setError] = useState(null);
-  const navigation = useNavigation(); // useNavigation hook'u eklenmiş
+  const navigation = useNavigation(); 
 
   useEffect(() => {
     fetchData();
@@ -16,17 +16,17 @@ const BreathExercise = () => {
 
   const fetchData = async () => {
     try {
-      const AdvancedCollection = collection(db, "breathexercise");
-      const AdvancedQuery = query(AdvancedCollection, orderBy("no", "asc"));
-      const querySnapshot = await getDocs(AdvancedQuery);
-      const AdvancedLessons = querySnapshot.docs.map((doc) => ({
+      const BreathCollection = collection(db, "breathingexercise");
+      const BreathQuery = query(BreathCollection, orderBy("no", "asc"));
+      const querySnapshot = await getDocs(BreathQuery);
+      const BreathExercise = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         url: doc.data().url,
         name: doc.data().name,
         desc: doc.data().desc,
         no: doc.data().no,
       }));
-      setAdvancedData(AdvancedLessons);
+      setAdvancedData(BreathExercise);
     } catch (error) {
       console.error("Veri çekme hatası:", error);
       setError(error);

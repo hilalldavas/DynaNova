@@ -16,17 +16,17 @@ const HealingMeditation = () => {
 
   const fetchData = async () => {
     try {
-      const AdvancedCollection = collection(db, "healing");
-      const AdvancedQuery = query(AdvancedCollection, orderBy("no", "asc"));
-      const querySnapshot = await getDocs(AdvancedQuery);
-      const AdvancedLessons = querySnapshot.docs.map((doc) => ({
+      const HealingCollection = collection(db, "healing");
+      const HealingQuery = query(HealingCollection, orderBy("no", "asc"));
+      const querySnapshot = await getDocs(HealingQuery);
+      const HealingMeditation = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         url: doc.data().url,
         name: doc.data().name,
         desc: doc.data().desc,
         no: doc.data().no,
       }));
-      setAdvancedData(AdvancedLessons);
+      setAdvancedData(HealingMeditation);
     } catch (error) {
       console.error("Veri çekme hatası:", error);
       setError(error);

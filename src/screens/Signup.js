@@ -1,163 +1,122 @@
-import { View, Text, StyleSheet, TextInput, Pressable, Image, Button, ScrollView,ImageBackground } from "react-native";
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from "react";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { initializeApp,auth } from 'firebase/app';
-import Checkbox from "expo-checkbox"
-const Signup = ({ email, setEmail, password, setPassword, handleAuthentication }) => {
-  const [isChecked, setIsChecked] = useState(false);
+import React, { useState } from 'react';
+import { View, Text, TextInput, Pressable, Image, StyleSheet, Alert,ImageBackground,} from 'react-native';
+import Checkbox from 'expo-checkbox';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import app from "../screens/firebaseConfig";
 
-  return (
-    
-    <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
-    <View style={styles.container}>
-      <Image
-        source={require('./images/logo.png')}
-        style={{
-          width: 230,
-          height: 230,
-          borderRadius: 20,
-          alignSelf: 'center',
-          left: 0,
-          top: 100,
-        }}
-      />
-      <Text style={styles.metin}>Aramıza Hoş Geldin!</Text>
-
-      <TextInput
-        style={[styles.input, { top: 150 },{color:'#ebdbdb'}]}
-        value={email}
-        onChangeText={setEmail}
-        placeholder="E-mail Giriniz.."
-        placeholderTextColor="#ebdbdb"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={[styles.input, { top: 180 },{color:'#ebdbdb'}]}
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Şifre Giriniz.."
-        placeholderTextColor="#ebdbdb"
-        secureTextEntry
-      />
-
-      <View
-        style={{
-          flexDirection: 'row',
-          marginVertical: 6,
-          top: 190,
-          left: 30
-        }}>
-        <Checkbox
-          style={{ marginRight: 8 }}
-          value={isChecked}
-          onValueChange={setIsChecked}
-          color={isChecked ? 'rgba(253, 166, 50, 0.7)' : undefined}
-        />
-        <Text style={styles.yazi}>Şartları ve koşulları kabul ediyorum.</Text>
-      </View>
-
-      <Pressable
-        onPress={() => handleAuthentication(email, password)} // handleAuthentication fonksiyonunu doğru şekilde çağır
-      >
-        <Text style={styles.kayıt}>Hesap Oluştur</Text>
-      </Pressable>
-    </View>
-    </ImageBackground>
-  )
-}
-
-const App = () => {
+const Register = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
 
-  //const auth = getAuth(app);
-/*   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
+  const handleSignup = async () => {
+    // E-posta formatını kontrol etmek için regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    return () => unsubscribe();
-  }, [auth]); */
+    if (!email.trim() || !emailRegex.test(email)) {
+      Alert.alert('Geçersiz E-posta', 'Lütfen geçerli bir e-posta adresi giriniz.');
+      return;
+    }
 
-  const handleAuthentication = async (email, password) => {
+    if (!password.trim()) {
+      Alert.alert('Şifre Gerekli', 'Lütfen şifrenizi giriniz.');
+      return;
+    }
+
+    const auth = getAuth(app);
     try {
-      if (user) {
-        console.log("başarıyla giriş yapıldı");
-        await signOut(auth);
-      } else {
-        await createUserWithEmailAndPassword(auth, email, password);
-        console.log('başarıyla yeni kullanıcı oluşturuldu');
-      }
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Başarılı kayıt işlemi
+      console.log('Yeni kullanıcı oluşturuldu:', userCredential.user.uid);
+      Alert.alert('Başarılı', 'Hesap başarıyla oluşturuldu.');
     } catch (error) {
-      console.error('Authentication error: ', error.message);
+      console.error('Kullanıcı oluşturma hatası:', error.message);
+      Alert.alert('Hata', 'Hesap oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
     }
   };
 
   return (
-    <View style={styles.container}>
-      <Signup
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        handleAuthentication={handleAuthentication}
-      />
-    </View>
-  )
-}
+    <ImageBackground source={require('./images/bg.jpg')} style={styles.container}>
+      <View style={styles.container}>
+        <Image
+          source={require('./images/logo.png')}
+          style={styles.logo}
+        />
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          placeholder="E-mail Giriniz.."
+          placeholderTextColor='#ebdbdb'
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Şifre Giriniz.."
+          placeholderTextColor='#ebdbdb'
+          secureTextEntry
+        />
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 ,marginRight:50,}}>
+        <Checkbox
+          style={{ marginRight: 8 }}
+          value={isChecked}
+          onValueChange={setIsChecked}
+          color={isChecked ? 'rgba(51, 77, 92, 0.9)' : undefined}
+        />
+        <Text style={styles.yazi}>Şartları ve koşulları kabul ediyorum.</Text>
+      </View>
+        <Pressable onPress={handleSignup} style={styles.button}>
+          <Text style={styles.buttonText}>Kayıt Ol</Text>
+        </Pressable>
+      </View>
+    </ImageBackground>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'rgba(51,77,92,255)'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  hesap: {
-    textAlign: 'left',
-    left: '3%',
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 30,
-    top: 100,
-  },
-  metin: {
-    textAlign: 'left',
-    left: '25%',
-    color: '#ebdbdb',
-    fontSize: 20,
-    top: 120,
+  logo: {
+    width: 230,
+    height: 230,
+    borderRadius: 20,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   input: {
-    color: '#ebdbdb',
     width: 330,
     height: 50,
-    backgroundColor: 'rgba(206,130,130,255)',
-    alignSelf: 'center',
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
+    color: '#ebdbdb',
     borderRadius: 20,
     paddingLeft: 20,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: '#ebdbdb',
+    borderRadius: 25,
   },
-  yazi: {
-    color: '#ebdbdb',
-    fontSize: 14
-  },
-  kayıt: {
-    top: 200,
-    width: 230,
+  button: {
+    marginTop: 15,
+    backgroundColor: 'rgba(51, 77, 92, 0.9)',
+    width: 200,
     height: 50,
-    backgroundColor: 'rgba(206,130,130,255)',
-    color: '#ebdbdb',
-    borderRadius: 50,
-    borderWidth: 0,
+    borderRadius: 20,
     justifyContent: 'center',
-    fontSize: 19,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#ebdbdb',
+    borderRadius: 25,
+  },
+  buttonText: {
+    color: '#ebdbdb',
     fontWeight: 'bold',
-    textAlign: 'center',
-    alignSelf: 'center',
-    paddingTop: 10
-  }
+    fontSize: 20,
+  },
+});
 
-})
-
-export default App;
+export default Register;
